@@ -1,10 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { Header } from "../components";
 export default function HomeLayout() {
   return (
     <nav>
-      <span className="text-3xl font-bold">Comfy Sloth </span>
-      <Outlet />
+      <Header />
+      <section className="align-element py-8">
+        <Outlet />
+      </section>
     </nav>
   );
 }

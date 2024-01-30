@@ -13,9 +13,10 @@ import {
   Register,
   SingleProduct,
 } from "./pages";
+
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <HomeLayout />,
     errorElement: <Error />,
     children: [
@@ -35,10 +36,7 @@ const router = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
-      {
-        path: "about",
-        element: <About />,
-      },
+      { path: "about", element: <About /> },
       {
         path: "checkout",
         element: <Checkout />,
@@ -50,19 +48,18 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/register",
-    element: <Register />,
-    errorElement: <Error />,
-  },
-  {
     path: "/login",
     element: <Login />,
     errorElement: <Error />,
   },
+  {
+    path: "/register",
+    element: <Register />,
+    errorElement: <Error />,
+  },
 ]);
 
-function App() {
+const App = () => {
   return <RouterProvider router={router} />;
-}
-
+};
 export default App;
