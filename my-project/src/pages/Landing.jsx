@@ -8,7 +8,7 @@ export async function loader() {
   const response = await customFetch(url);
 
   const products = response.data.data;
-  // console.log({ products: products[0] });
+  // console.log(products);
   return { products };
 }
 export default function Landing() {
