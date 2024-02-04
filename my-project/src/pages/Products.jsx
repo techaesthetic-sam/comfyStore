@@ -14,7 +14,7 @@ export async function loader({ request }) {
 
   const products = response.data.data;
   const meta = response.data.meta;
-  //console.log(request);
+  //console.log(params);
   // console.log(products);
   return { products, meta, params };
 }
