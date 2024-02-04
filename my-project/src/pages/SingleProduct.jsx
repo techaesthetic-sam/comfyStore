@@ -32,6 +32,7 @@ const SingleProduct = () => {
     description,
     productColor,
     company,
+    amount,
   };
 
   const dispatch = useDispatch();
@@ -112,10 +113,7 @@ const SingleProduct = () => {
           </div>
           {/* CART BUTTON */}
           <div className="mt-10 ">
-            <button
-              className="btn btn-secondary btn-md"
-              onClick={addToCart}
-            >
+            <button className="btn btn-secondary btn-md" onClick={addToCart}>
               Add to bag
             </button>
           </div>
