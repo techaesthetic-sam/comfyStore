@@ -1,11 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
+const themes = {
+  dracula: "dracula",
+  winter: "winter",
+};
+function getThemeFromLocalStorage() {
+  const theme = localStorage.getItem("theme") || themes.winter;
+  document.documentElement.setAttribute("data-theme", theme);
+  return theme;
+}
+
 const initialState = {
   user: {
-    username: "coding addict",
+    username: "coding addict samhith",
   },
-  theme: "dracula",
+  theme: getThemeFromLocalStorage(),
 };
 
 const userSlice = createSlice({
@@ -16,13 +26,17 @@ const userSlice = createSlice({
       console.log(state);
     },
     logoutUser: (state) => {
-      console.log(state);
+      state.user = null;
+      localStorage.removeItem("user");
     },
     toggleTheme: (state) => {
-      console.log(state);
+      const { dracula, winter } = themes;
+      state.theme = state.theme === dracula ? winter : dracula;
+      document.documentElement.setAttribute("data-theme", state.theme);
+      localStorage.setItem("theme", state.theme);
     },
   },
 });
 
 export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
-export default userSlice.reducers;
+export default userSlice.reducer;

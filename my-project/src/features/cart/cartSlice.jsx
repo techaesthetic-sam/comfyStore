@@ -48,6 +48,7 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
       state.numItemsInCart -= product.amount;
       state.cartTotal -= product.price * product.amount;
+
       cartSlice.caseReducers.calculateTotals(state);
       toast.error("Item removed from cart");
     },
@@ -58,6 +59,10 @@ const cartSlice = createSlice({
       state.cartTotal += item.price * (amount - item.amount);
       item.amount = amount;
       cartSlice.caseReducers.calculateTotals(state);
+      if (state.numItemsInCart === -1) {
+        cartSlice.caseReducers.clearCart(state);
+      }
+      // }   just in case any error in navBar or something edit this logic
       toast.success("Cart updated");
     },
     calculateTotals: (state) => {
