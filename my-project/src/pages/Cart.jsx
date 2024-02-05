@@ -3,9 +3,9 @@ import { CartItemsList, SectionTitle, CartTotals } from "../components";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  // const user = useSelector((state) => state.userState.user);
+  const user = useSelector((state) => state.userState.user);
 
-  const user = null;
+  // const user = null;
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
   if (numItemsInCart === 0) {
