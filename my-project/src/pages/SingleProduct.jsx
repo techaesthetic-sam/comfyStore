@@ -41,7 +41,7 @@ const SingleProduct = () => {
     dispatch(addItem({ product: cartProduct }));
   };
   return (
-    <section>
+    <section key={cartProduct.cartID}>
       <div className="text-md breadcrumbs">
         <ul>
           <li>
@@ -103,12 +103,13 @@ const SingleProduct = () => {
               className="select select-secondary select-bordered select-md"
               value={amount}
               onChange={handleAmount}
+              key={amount}
             >
               {/* <option value={1}>1</option>
               <option value={2}>2</option>
               <option value={3}>3</option> */}
 
-              {generateAmountOptions({ number: 5 })}
+              {generateAmountOptions(5)}
             </select>
           </div>
           {/* CART BUTTON */}

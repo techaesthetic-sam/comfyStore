@@ -26,6 +26,7 @@ export default function Navbar() {
   }, [theme]);
 
   const numItemsInCart = useSelector((store) => store.cartState.numItemsInCart);
+  console.log(numItemsInCart);
 
   return (
     <nav className="bg-base-200">

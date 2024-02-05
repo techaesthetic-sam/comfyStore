@@ -31,12 +31,19 @@ const cartSlice = createSlice({
       cartSlice.caseReducers.calculateTotals(state);
       toast.success("Item added to cart");
     },
+    // clearCart: (state) => {
+    //   localStorage.setItem("cart", JSON.stringify(defaultState));
+    //   return defaultState;
+    // },
     clearCart: (state) => {
-      localStorage.setItem("cart", JSON.stringify(defaultState));
-      return defaultState;
+      const newState = { ...defaultState };
+      cartSlice.caseReducers.calculateTotals(newState);
+      localStorage.setItem("cart", JSON.stringify(newState));
+      return newState;
     },
+
     removeItem: (state, action) => {
-      const { cartID } = action.payload;
+      const cartID = action.payload;
       const product = state.cartItems.find((i) => i.cartID === cartID);
       state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
       state.numItemsInCart -= product.amount;
