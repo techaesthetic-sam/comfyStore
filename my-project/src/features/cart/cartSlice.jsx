@@ -57,12 +57,13 @@ const cartSlice = createSlice({
       const item = state.cartItems.find((i) => i.cartID === cartID);
       state.numItemsInCart += amount - item.amount;
       state.cartTotal += item.price * (amount - item.amount);
+      console.log(amount, item.amount);
       item.amount = amount;
       cartSlice.caseReducers.calculateTotals(state);
       if (state.numItemsInCart === -1) {
         cartSlice.caseReducers.clearCart(state);
       }
-      // }   just in case any error in navBar or something edit this logic
+      // }   just in case any error in navBar or something edit the above if logic
       toast.success("Cart updated");
     },
     calculateTotals: (state) => {

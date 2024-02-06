@@ -22,9 +22,14 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loginUser: (state, action) => {
-      console.log(state);
-    },
+    // loginUser: (state, action) => {
+    //   const {
+    //     user: { username },
+    //   } = action.payload;
+    //   // console.log(user);
+    //   console.log(username);
+    //   //state.user = username;
+    // },
     logoutUser: (state) => {
       state.user = null;
       localStorage.removeItem("user");
