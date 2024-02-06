@@ -5,23 +5,25 @@ import { customFetch } from "../utils";
 import { toast } from "react-toastify";
 import { loginUser } from "../features/user/userSlice";
 
-export function action(store) {
-  return async ({ request }) => {
-    const data = Object.fromEntries(await request.formData());
+export const action =
+  (store) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+
     try {
       const response = await customFetch.post("/auth/local", data);
-      // console.log(response.data.user.username);
       store.dispatch(loginUser(response.data));
-      toast.success("loggedIn successfully");
+      toast.success("logged in successfully");
       return redirect("/");
     } catch (error) {
       const errorMessage =
-        error?.response?.data?.message || "please check the values entered";
+        error?.response?.data?.error?.message ||
+        "please double check your credentials";
       toast.error(errorMessage);
       return null;
     }
   };
-}
 export default function Login() {
   return (
     <section className="h-screen grid place-items-center">

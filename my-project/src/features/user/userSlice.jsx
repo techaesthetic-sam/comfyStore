@@ -11,10 +11,23 @@ function getThemeFromLocalStorage() {
   return theme;
 }
 
+// function getUserFromLocalStorage() {
+//   try {
+//     const userData = localStorage.getItem("user");
+//     return userData ? JSON.parse(userData) : null;
+//   } catch (error) {
+//     console.error("Error parsing user data from local storage:", error);
+//     return null;
+//   }
+// }
+
+function getUserFromLocalStorage() {
+  const user = localStorage.getItem("user");
+  console.log(JSON.parse(user));
+  return user ? JSON.parse(user) : null;
+}
 const initialState = {
-  user: {
-    username: "coding addict samhith",
-  },
+  user: getUserFromLocalStorage(),
   theme: getThemeFromLocalStorage(),
 };
 
@@ -22,14 +35,14 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // loginUser: (state, action) => {
-    //   const {
-    //     user: { username },
-    //   } = action.payload;
-    //   // console.log(user);
-    //   console.log(username);
-    //   //state.user = username;
-    // },
+    loginUser: (state, action) => {
+      //const user = { ...action.payload.user, token: action.payload.jwt };
+      //console.log(user);
+      const user = action.payload.user.username;
+      console.log(user);
+      state.user = user;
+      localStorage.setItem("user", JSON.stringify(user));
+    },
     logoutUser: (state) => {
       state.user = null;
       localStorage.removeItem("user");
