@@ -35,7 +35,7 @@ export default function Login() {
         identifier: "test@test.com",
         password: "secret",
       });
-      console.log(response.data);
+      //console.log(response.data);
       dispatch(loginUser(response.data));
       navigate("/");
       toast.success("Congrats , you have loggedIn");
