@@ -23,7 +23,7 @@ function getThemeFromLocalStorage() {
 
 function getUserFromLocalStorage() {
   const user = localStorage.getItem("user");
-  console.log(JSON.parse(user));
+  //console.log(JSON.parse(user));
   return user ? JSON.parse(user) : null;
 }
 const initialState = {
