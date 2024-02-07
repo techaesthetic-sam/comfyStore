@@ -8,7 +8,7 @@ export async function action({ request }) {
   const formData = await request.formData();
 
   const data = Object.fromEntries(formData);
-  //console.log(data);
+  //console.log(data);     //directly values are getting retrieved here and stored
 
   try {
     const response = await customFetch.post("/auth/local/register", data);

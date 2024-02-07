@@ -1,6 +1,8 @@
 import React from "react";
 import { redirect, useLoaderData } from "react-router";
 import { customFetch } from "../utils";
+import { PaginationContainer, SectionTitle } from "../components";
+import OrdersList from "../components/OrdersList";
 export const loader =
   (store) =>
   async ({ request }) => {
@@ -39,10 +41,14 @@ export const loader =
   };
 export default function Orders() {
   const { meta, orders } = useLoaderData();
-  // console.log(orders);
+  if (meta.pagination.total < 1) {
+    return <SectionTitle title="please make the order" />;
+  }
   return (
-    <div>
-      <h1>hello</h1>
-    </div>
+    <>
+      <SectionTitle text="Your Orders" />
+      <OrdersList />
+      <PaginationContainer />
+    </>
   );
 }

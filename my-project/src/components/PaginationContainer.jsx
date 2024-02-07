@@ -12,10 +12,13 @@ export default function PaginationContainer() {
   });
 
   const { search, pathname } = useLocation();
+  //console.log(new URLSearchParams(search));
   const navigate = useNavigate();
   function handlePageChange(pageNumber) {
     const searchParams = new URLSearchParams(search);
-    searchParams.set("page", pageNumber);
+
+    searchParams.set("page", pageNumber); //to read
+
     navigate(`${pathname}?${searchParams.toString()}`);
   }
   if (pageCount < 2) return null;
