@@ -4,7 +4,7 @@ import { customFetch } from "../utils";
 import { PaginationContainer, SectionTitle } from "../components";
 import OrdersList from "../components/OrdersList";
 export const loader =
-  (store) =>
+  (store, queryClient) =>
   async ({ request }) => {
     const user = store.getState().userState.user;
 

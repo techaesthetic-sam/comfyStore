@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { clearCart } from "../features/cart/cartSlice";
 
 export const action =
+  (queryClient) =>
   (store) =>
   async ({ request }) => {
     const formData = await request.formData();
