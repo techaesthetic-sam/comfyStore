@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ProductsContainer, Filters, PaginationContainer } from "../components";
 import { customFetch } from "../utils";
 
@@ -11,10 +11,10 @@ export async function loader({ request }) {
   ]);
 
   const response = await customFetch(url, { params });
-
+  console.log("1");
   const products = response.data.data;
   const meta = response.data.meta;
-  //console.log(params);
+  // console.log(params);
   // console.log(products);
   return { products, meta, params };
 }
