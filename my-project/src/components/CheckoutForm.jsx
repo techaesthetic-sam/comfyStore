@@ -40,7 +40,7 @@ export const action =
       toast.success("order placed successfully");
       return redirect("/orders");
     } catch (error) {
-      //console.log(error.response.request.status);
+      console.log(error.response.request.status);
       const errorMessage =
         error?.response?.data?.error?.message ||
         "there was an error placing your order";

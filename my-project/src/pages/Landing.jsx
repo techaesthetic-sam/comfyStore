@@ -13,7 +13,7 @@ export const loader = (queryClient) => async () => {
   const response = await queryClient.ensureQueryData(featuredProducts);
   //console.log(response);
   const products = response.data.data;
-  console.log(products);
+  //console.log(products);
   return { products };
 };
 export default function Landing() {
